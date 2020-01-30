@@ -1,26 +1,96 @@
-import matplotlib.pyplot as plt
-import networkx as nx
-import matplotlib.animation as animation
-from matplotlib import style
+import time
 
-style.use('fivethirtyeight')
+votepernode = 2 
+votesforconfrimation = 2 
 
-fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
+def countlinks(array):
+    counter = 0 
+    counter2 = 0
+    votetallyarray = {}
+    oddarray = []
+    normalarray = []
+
+    while len(array) != counter:
+
+        lastnum = array[counter][1]
+        oddarray.append(array[counter][1])
+        normalarray.append(array[counter][0])
+
+        try:
+            var = votetallyarray[str(array[counter][0])]
+            var += 1 
+            votetallyarray[str(array[counter][0])] = var
+            pass
+        except:
+            votetallyarray[str(array[counter][0])] = 1 
+            pass
+        
+        if array[counter][0]:
+            pass
+
+        counter += 1 
+        pass
+
+    main_list = list(set(oddarray) - set(normalarray))
+
+    while len(main_list) != counter2:
+
+        number = int(main_list[counter2])
+
+        votetallyarray[str(number)] = 0 
+
+        counter2 +=1 
+        pass
+
+    return votetallyarray, lastnum
+
+def decidevote(votetally):
+    counter = 1 
+    votesthreshold = 0
+    voteon = []
+
+    while len(votetally) != counter - 1:
+
+        if votetally[str(counter)] < votesforconfrimation:
+            voteon.append(counter)
+            votesthreshold += 1 
+            pass
+        if votesthreshold == votepernode:
+
+            return voteon
+        
+        counter += 1 
+
+        pass
+
+    pass
+
+def constructVote(voteon, lastnumber):
+    counter = 0 
+    lastnumber = int(lastnumber) + 1 
+    while len(voteon) != counter:
+        
+        votetuple = (str(voteon[counter]),str(lastnumber))
+        array.append(votetuple)
+
+        pass
 
 
-def animate(i):
-    graph_data = open('data.txt','r').read()
-    lines = graph_data.split('\n')
-    xs = []
-    ys = []
-    for line in lines:
-        if len(line) > 1:
-            x, y = line.split(',')
-            xs.append(float(x))
-            ys.append(float(y))
-    ax1.clear()
-    ax1.plot(xs, ys)
+array = []
 
-ani = animation.FuncAnimation(fig, animate, interval=1000)
-plt.show()
+tupletest = ("1","2")
+array.append(tupletest)
+tupletest = ("1","3")
+array.append(tupletest)
+tupletest = ("2","3")
+array.append(tupletest)
+
+linkarray = countlinks(array)
+proposedvotes = decidevote(linkarray[0])
+constructVote(proposedvotes,linkarray[1])
+
+pass
+
+
+
+

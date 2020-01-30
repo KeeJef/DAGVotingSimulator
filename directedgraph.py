@@ -3,40 +3,30 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
 
-style.use('fivethirtyeight')
+#style.use('fivethirtyeight')
 
-G = nx.DiGraph()
+G = nx.MultiDiGraph()
 fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
-
-relationshiplistcopy = ""
+#ax1 = fig.add_subplot(1,1,1)
 
 
 def animate(i):
 
+    fig.clf()
     relationshiplist = open('data.txt','r').read()
     relationshiplist = eval(relationshiplist)
-
-    if i != 0:
-        if relationshiplistcopy == relationshiplist:
-            return
-        pass
-
-    
-
 
     G.clear()
     G.add_edges_from(relationshiplist)
 
     
-    pos = nx.spring_layout(G)
+    pos = nx.spectral_layout(G)
     nx.draw_networkx_nodes(G, pos, cmap=plt.get_cmap('jet'), node_size = 500)
     nx.draw_networkx_labels(G, pos)
-    nx.draw_networkx_edges(G, pos, edge_color='r', arrows=True)
-    nx.draw_networkx_edges(G, pos, arrows=False)
+    nx.draw_networkx_edges(G, pos, edge_color='b', arrows=True, connectionstyle='arc3, rad = 0.1')
 
-    relationshiplistcopy = relationshiplist
+    
     
 
-ani = animation.FuncAnimation(fig, animate, interval=9000)
+ani = animation.FuncAnimation(fig, animate, interval=5000)
 plt.show()
