@@ -13,7 +13,7 @@ fig = plt.figure()
 def animate(i):
 
     fig.clf()
-    relationshiplist = open('data.txt','r').read()
+    relationshiplist = open('data.txt','r').read() #import json here
     relationshiplist = eval(relationshiplist)
 
     G.clear()

@@ -1,4 +1,5 @@
 import time
+import json
 
 votepernode = 2 
 votesforconfrimation = 2 
@@ -73,6 +74,8 @@ def constructVote(voteon, lastnumber):
         votetuple = (str(voteon[counter]),str(lastnumber))
         array.append(votetuple)
 
+        counter += 1 
+
         pass
 
 
@@ -80,14 +83,19 @@ array = []
 
 tupletest = ("1","2")
 array.append(tupletest)
-tupletest = ("1","3")
-array.append(tupletest)
-tupletest = ("2","3")
-array.append(tupletest)
 
-linkarray = countlinks(array)
-proposedvotes = decidevote(linkarray[0])
-constructVote(proposedvotes,linkarray[1])
+interations = 10
+counter = 0 
+
+while counter != interations:
+    linkarray = countlinks(array)
+    proposedvotes = decidevote(linkarray[0])
+    constructVote(proposedvotes,linkarray[1])
+    counter += 1
+    pass
+
+with open('listfile.txt', 'w') as filehandle:
+    json.dump(array, filehandle)
 
 pass
 
