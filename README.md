@@ -1,5 +1,7 @@
 # DAG (Directed Acyclic Graph) Simulator 
 
+![DTRenderer Demo](dag.gif)
+
 This application allows you to simulate an animated DAG while being able to change two properties
 
 1. The amount of votes each node needs before it is "Confirmed" - Votesforconfrimation
