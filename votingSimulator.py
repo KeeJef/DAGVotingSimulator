@@ -2,7 +2,7 @@ import time
 import json
 
 votepernode = 2 
-votesforconfrimation = 2 
+votesforconfrimation = 4 
 
 def countlinks(array):
     counter = 0 
@@ -87,15 +87,20 @@ array.append(tupletest)
 interations = 10
 counter = 0 
 
-while counter != interations:
+while True:
     linkarray = countlinks(array)
     proposedvotes = decidevote(linkarray[0])
     constructVote(proposedvotes,linkarray[1])
     counter += 1
+    time.sleep(2)
+
+    with open('listfile.txt', 'w') as filehandle:
+        json.dump(array, filehandle)
+
     pass
 
-with open('listfile.txt', 'w') as filehandle:
-    json.dump(array, filehandle)
+#with open('listfile.txt', 'w') as filehandle:
+   # json.dump(array, filehandle)
 
 pass
 
