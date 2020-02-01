@@ -93,7 +93,7 @@ while True:
     constructVote(proposedvotes,linkarray[1])
     counter += 1
     time.sleep(2)
-    print(str(counter) + " Interation")
+    print(str(counter) + " Iteration")
 
     with open('listfile.txt', 'w') as filehandle:
         json.dump(array, filehandle)

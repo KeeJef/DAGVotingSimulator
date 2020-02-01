@@ -13,8 +13,13 @@ fig = plt.figure()
 def animate(i):
 
     fig.clf()
-    with open('listfile.txt') as json_file:
-        relationshiplist = json.load(json_file)
+
+    try:
+        with open('listfile.txt') as json_file:
+            relationshiplist = json.load(json_file)
+        pass
+    except:
+        return
         
     
     counter = 0 
