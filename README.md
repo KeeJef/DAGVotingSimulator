@@ -11,7 +11,7 @@ Right now this voting simulator will construct the DAG using a few rules
 2. Nodes will always vote for the oldest node first 
 3. Nodes will not vote for nodes that has already reached the confirmed votes threshold
 
-This application uses, matplotlib, networkx 
+This application uses, matplotlib, networkx and graphviz
 
 You can use this application by first running directedgraph.py
 You will then want to make any modifications to the votingSimulator.py file, by default Votesforconfrimation and Votespernode are set to 
