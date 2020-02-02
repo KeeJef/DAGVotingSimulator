@@ -1,6 +1,6 @@
 # DAG (Directed Acyclic Graph) Simulator 
 
-![Dag Render](dag.gif)
+![Dag Render](DAGgif.gif)
 
 This application allows you to simulate an animated DAG while being able to change two properties
 
