@@ -1,13 +1,13 @@
-# DAG (Directed Acyclic Graph) Simulator 
+# Backwards Voting Simulator 
 
 ![Dag Render](DAGgif.gif)
 
-This application allows you to simulate an animated DAG while being able to change two properties
+This application allows you to simulate an animated voting process where each node requires X number of votes to be confirmed and each node has X number of votes to allocate
 
 1. The amount of votes each node needs before it is "Confirmed" - Votesforconfrimation
 2. How many votes each node has - Votespernode
 
-Right now this voting simulator will construct the DAG using a few rules 
+Right now this voting simulator will construct the graph using a few rules 
 
 1. A vote cannot be cast for the same node more than once 
 2. Nodes will always vote for the oldest node first 
