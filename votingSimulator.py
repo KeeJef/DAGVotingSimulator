@@ -1,8 +1,8 @@
 import time
 import json
 
-votepernode = 2 
-votesforconfrimation = 4 
+votepernode = 2 #Votes each node gets on other nodes
+votesforconfrimation = 4 #Votes before a node is considered ineligible for new votes 
 
 def countlinks(array):
     counter = 0 
@@ -81,7 +81,7 @@ def constructVote(voteon, lastnumber):
 
 array = []
 
-tupletest = ("1","2")
+tupletest = ("1","2") #sets the initial relationship which is added onto
 array.append(tupletest)
 
 interations = 10
@@ -99,9 +99,6 @@ while True:
         json.dump(array, filehandle)
 
     pass
-
-#with open('listfile.txt', 'w') as filehandle:
-   # json.dump(array, filehandle)
 
 pass
 
